@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gamer Zone - Catálogo</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+   <header class="main-header">
+        <div class="header-brand"><span class="app-logo">🎮</span><h1 class="app-name">Gamer Zone</h1></div>
+        <div class="student-credits"><p>Desarrollado por: <strong>Luciano Juárez</strong> y <strong>Facundo Romero</strong></p></div>
+        <nav class="main-nav">
+            <a href="index.html" class="nav-btn">🏠 Inicio</a>
+            <a href="productos.html" class="nav-btn active">🕹️ Catálogo</a>
+            <a href="carrito.html" class="nav-btn">🛒 Mi Pedido</a>
+        </nav>
+    </header>
+
+    <section class="filter-section">
+        <button class="btn-filter" onclick="filtrarProductos('TODOS')">🌟 Todo</button>
+        <button class="btn-filter" onclick="filtrarProductos('CONSOLAS')">🕹️ Consolas</button>
+        <button class="btn-filter" onclick="filtrarProductos('JUEGOS')">💿 Videojuegos</button>
+    </section>
+
+    <main style="padding: 0 20px 20px 20px; flex: 1;">
+        <div id="contenedor-productos" class="products-container" style="height: auto;">
+            <p class="loading">Cargando catálogo gamer...</p>
+        </div>
+    </main>
+
+    <script src="productos.js"></script>
+</body>
+</html>

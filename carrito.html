@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gamer Zone - Tu Pedido</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="header-brand"><span class="app-logo">🎮</span><h1 class="app-name">Gamer Zone</h1></div>
+        <div class="student-credits"><p>Desarrollado por: <strong>Luciano Juárez</strong> y <strong>Facundo Romero</strong></p></div>
+        <nav class="main-nav">
+            <a href="index.html" class="nav-btn">🏠 Inicio</a>
+            <a href="productos.html" class="nav-btn">🕹️ Catálogo</a>
+            <a href="carrito.html" class="nav-btn active">🛒 Mi Pedido</a>
+        </nav>
+    </header>
+
+    <main class="hero-container" style="align-items: flex-start; padding-top: 40px;">
+        <div class="welcome-box" style="width: 100%; max-width: 600px; text-align: left;">
+            <h3 style="color: #00ff88; font-size: 1.5rem; margin-bottom: 20px; border-bottom: 1px solid #222226; padding-bottom: 10px;">🛒 Detalle de tu Pedido</h3>
+            
+            <div id="pantalla-carrito-items">
+                </div>
+
+            <div class="cart-total" style="display: flex; justify-content: space-between; font-size: 1.4rem; font-weight: bold; margin: 20px 0; padding-top: 15px; border-top: 1px solid #222226;">
+                <span>Total a Pagar:</span>
+                <span id="cart-total-txt">$0</span>
+            </div>
+
+            <button onclick="procesarCompraFinal()" class="btn-checkout" style="font-size: 1.1rem; padding: 15px;">🔥 GENERAR MI TICKET DE COMPRA</button>
+        </div>
+    </main>
+
+    <script src="carrito.js"></script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gamer Zone - Inicio</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="header-brand"><span class="app-logo">🎮</span><h1 class="app-name">Gamer Zone</h1></div>
+        <div class="student-credits"><p>Desarrollado por: <strong>Luciano Juárez</strong> y <strong>Facundo Romero</strong></p></div>
+        <nav class="main-nav">
+            <a href="index.html" class="nav-btn active">🏠 Inicio</a>
+            <a href="productos.html" class="nav-btn">🕹️ Catálogo</a>
+            <a href="carrito.html" class="nav-btn">🛒 Mi Pedido</a>
+        </nav>
+    </header>
+
+    <main class="hero-container">
+        <div class="welcome-box">
+            <h2>¡BIENVENIDO A LA EXPERIENCIA GAMER!</h2>
+            <p>Por favor, ingresá tu nombre para iniciar tu orden en el tótem de autoservicio.</p>
+            
+            <div class="input-group" style="margin-bottom: 25px;">
+                <input type="text" id="nombre-cliente" placeholder="Tu nombre aquí..." style="padding: 12px; width: 100%; max-width: 300px; border-radius: 6px; border: 1px solid #222226; background: #0d0d0e; color: white; text-align: center; font-size: 1rem;">
+            </div>
+
+            <button onclick="guardarNombreEIniciar()" class="btn-start" style="cursor: pointer; border: none;">🕹️ INICIAR MI PEDIDO</button>
+        </div>
+    </main>
+
+    <script>
+        function guardarNombreEIniciar() {
+            const nombre = document.getElementById("nombre-cliente").value.trim();
+            if (!nombre) {
+                alert("Por favor, ingresá tu nombre antes de comenzar.");
+                return;
+            }
+            localStorage.setItem("cliente_nombre", nombre);
+            window.location.href = "productos.html";
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gamer Zone - Ticket de Compra</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="header-brand">
+            <span class="app-logo">🎮</span> 
+            <h1 class="app-name">Gamer Zone</h1>
+        </div>
+        <div class="student-credits">
+            <p>Desarrollado por: <strong>Luciano Juárez</strong> y <strong>Facundo Romero</strong></p>
+        </div>
+        <nav class="main-nav">
+            <a href="index.html" class="nav-btn">🏠 Inicio</a>
+            <a href="productos.html" class="nav-btn">🕹️ Catálogo</a>
+            <a href="ticket.html" class="nav-btn active">📋 Ver Ticket</a>
+        </nav>
+    </header>
+
+    <main class="ticket-container">
+        <div class="ticket-card">
+            <div class="ticket-header">
+                <h3>GRACIAS POR TU COMPRA</h3>
+                <p>Retirá tu pedido por el mostrador</p>
+
+                <p style="margin-top: 15px; font-weight: bold; font-size: 1rem; text-transform: uppercase;">CLIENTE: <span id="ticket-cliente" style="color: #000;">---</span></p>
+
+                <div class="order-number">
+                    <span>SU NÚMERO DE PEDIDO ES</span>
+                    <h2 id="ticket-id">#---</h2>
+                </div>
+            </div>
+            
+            <hr class="ticket-divider">
+            
+            <div id="ticket-detalle" class="ticket-details">
+                </div>
+            
+            <hr class="ticket-divider">
+
+            <div class="ticket-footer">
+                <p style="font-weight: bold; font-size: 1.1rem; letter-spacing: 2px; margin-bottom: 5px;">GAMER ZONE</p>
+                <p id="ticket-fecha" style="font-size: 0.85rem; color: #555; margin-bottom: 15px;">FECHA: --/--/----</p>
+
+                <p>¡Que disfrutes tu compra!</p>
+                <a href="index.html" class="btn-back-tote" onclick="limpiarPedido()">SALIR</a>
+            </div>
+        </div>
+    </main>
+
+    <script src="ticket.js"></script>
+</body>
+</html>
