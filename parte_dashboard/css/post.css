@@ -1,0 +1,80 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+header {
+    background-color: #5c5c5c;
+    padding-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+body {
+    background-color: #333333;
+    color: #d8d8d8;
+
+}
+.logo img {
+    height: 100px;
+    width: 100px;
+    margin: 30px;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.5);
+}
+
+.enlaces{
+    text-align: center;
+}
+
+.enlaces a {
+    color:aliceblue;
+    text-decoration: none;
+}
+
+.enlaces li {
+    display: inline;
+    padding-inline: 10px;
+} 
+
+.seccion-productos {
+    text-align: center;
+    margin: 20px auto;
+    max-width: 800px;
+}
+
+.seccion-productos h2 {
+    margin: 30px;
+}
+
+.card-producto {
+    border: solid gray;
+    max-width: 300px;
+    margin: 30px;
+    padding: 5px;
+}
+
+.form-productos {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.form-alta {
+    display: flex;
+    flex-direction: column;
+    max-width: 400px;
+    margin: 0px auto;
+    gap: 12px;
+    padding: 20px;
+    text-align: left;
+}
+.boton {
+    max-width: 150px;
+    align-self: center;
+    padding: 2px 5px;
+    margin: 10px;
+}
+
+
