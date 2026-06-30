@@ -1,4 +1,4 @@
-const URL_API = "http://localhost:3000/api/products";
+const URL_API = "http://localhost:3000/api/productos";
 const contenedorProductos = document.getElementById("contenedor-productos");
 
 let todosLosProductos = []; 
@@ -43,9 +43,9 @@ function renderizarProductos(listaProductos) {
             const rutaImagen = `assets/img/${prod.imagen}`;
 
             tarjeta.innerHTML = `
-                <img src="${rutaImagen}" alt="${prod.producto}" class="producto-img">
+                <img src="${prod.imagen}" alt="${prod.producto}" class="producto-img">
                 <div class="producto-info">
-                    <h3>${prod.producto}</h3>
+                    <h3>${prod.nombre}</h3>
                     <p class="categoria-tag">${prod.categoria}</p>
                     <p class="precio">$${prod.precio.toLocaleString('es-AR')}</p>
                     <button class="btn-agregar" onclick="agregarAlCarrito(${prod.id})">🎮 Agregar al Carrito</button>
@@ -66,19 +66,21 @@ function filtrarProductos(categoria) {
 }
 
 function agregarAlCarrito(id) {
+    const idNumero = Number(id);
+
     const producto = todosLosProductos.find(p => p.id === id);
     if (!producto) return;
 
     let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
     
-    const existeEnCarrito = carrito.find(item => item.id === id);
+    const existeEnCarrito = carrito.find(item => Number(item.id) === id);
 
     if (existeEnCarrito) {
         existeEnCarrito.cantidad++;
     } else {
         carrito.push({
             id: producto.id,
-            producto: producto.producto,
+            nombre: producto.nombre,
             precio: producto.precio,
             cantidad: 1
         });
@@ -86,7 +88,7 @@ function agregarAlCarrito(id) {
 
     localStorage.setItem("carrito", JSON.stringify(carrito));
     
-    alert(`🎮 ¡${producto.producto} fue añadido a tu pedido!`);
+    alert(`🎮 ¡${producto.nombre} fue añadido a tu pedido!`);
 }
 
 document.addEventListener("DOMContentLoaded", obtenerProductos);
