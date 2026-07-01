@@ -410,3 +410,12 @@ header {
 .bloque-item {
     list-style: none;
 }
+
+html[data-theme="light"] body {
+    background-color: #ffffff;
+    color: #000000;
+}
+
+html[data-theme="light"] header {
+    background-color: #eeeeee;
+}

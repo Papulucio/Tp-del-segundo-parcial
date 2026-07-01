@@ -38,6 +38,38 @@ document.addEventListener("DOMContentLoaded", () => {
     `;
 
     ticketDetalle.innerHTML = htmlContenido;
+
+    const btnDescargar = document.getElementById("btn-descargar-pdf");
+    if (btnDescargar) {
+        btnDescargar.addEventListener("click", () => {
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF();
+
+            doc.setFontSize(22);
+            doc.text("GAMER ZONE - TICKET DE COMPRA", 10, 20);
+            doc.line(10, 25, 200, 25); 
+
+            doc.setFontSize(14);
+            doc.text(`Ticket Nro: #${String(ultimoPedido.id).padStart(3, '0')}`, 10, 40);
+            doc.text(`Cliente: ${nombreGuardado}`, 10, 50);
+            doc.text(`Fecha: ${fechaTexto}`, 10, 60);
+            doc.text("--------------------------------------------------", 10, 70);
+
+            let posY = 80;
+            ultimoPedido.items.forEach(item => {
+                const subtotal = item.precio * item.cantidad;
+                doc.text(`• ${item.producto} (x${item.cantidad}) ---- $${subtotal.toLocaleString('es-AR')}`, 10, posY);
+                posY += 10;
+            });
+
+            doc.text("--------------------------------------------------", 10, posY);
+            posY += 10;
+            doc.setFontSize(16);
+            doc.text(`TOTAL: $${ultimoPedido.total.toLocaleString('es-AR')}`, 10, posY);
+
+            doc.save(`Ticket_GamerZone_${nombreGuardado}.pdf`);
+        });
+    }
 });
 
 function reiniciarTotem(event) {

@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gamer Zone - Ticket de Compra</title>
     <link rel="stylesheet" href="css/styles.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 </head>
 <body>
 
@@ -49,11 +51,17 @@
                 <p id="ticket-fecha" style="font-size: 0.85rem; color: #555; margin-bottom: 15px;">FECHA: --/--/----</p>
 
                 <p>¡Que disfrutes tu compra!</p>
+
+                <button id="btn-descargar-pdf" style="display: block; width: 100%; max-width: 200px; margin: 0 auto 15px auto; padding: 10px; background-color: #72CCEF; color: white; border: none; border-radius: 5px; font-weight: bold; cursor: pointer;">📄 Descargar Ticket PDF</button>
+
                 <a href="index.html" class="btn-back-tote" onclick="limpiarPedido()">SALIR</a>
             </div>
         </div>
     </main>
 
+    <button id="theme-toggle" style="position: fixed; bottom: 20px; right: 20px; padding: 12px 20px; background-color: #111; color: #fff; border: 2px solid #fff; border-radius: 30px; font-weight: bold; cursor: pointer; z-index: 1000; box-shadow: 0 4px 10px rgba(0,0,0,0.5);">☀️ Modo Claro</button>
+
     <script src="ticket.js"></script>
+    <script src="tema.js"></script>
 </body>
 </html>

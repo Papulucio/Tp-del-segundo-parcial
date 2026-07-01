@@ -1,5 +1,3 @@
-
-
 let carrito = JSON.parse(localStorage.getItem("carrito-productos")) || [];
 
 // 1. LEER DEL LOCALSTORAGE Y DIBUJAR
@@ -60,12 +58,15 @@ function procesarCompraFinal() {
     
     if (confirmacion) {
         // Acá podrías hacer un fetch() con método POST a un futuro endpoint /api/ventas
-        alert("🔥 ¡COMPRA EXITOSA! Gracias por confiar en Gamer Zone.\n\nTu ticket fue generado y enviado a tu consola.");
+        const fechaActual = new Date().toLocaleDateString();
+        localStorage.setItem("fecha-ticket", fechaActual);
+
+        alert("🔥 ¡COMPRA EXITOSA! Redireccionando a tu comprobante...");
         
-        carrito = [];
+        /*carrito = [];
         localStorage.removeItem("carrito-productos"); // Vaciamos la memoria
         localStorage.removeItem("nombre-cliente")
-        mostrarCarrito(); // Limpiamos pantalla
+        mostrarCarrito(); // Limpiamos pantalla*/
         window.location.href = "index.html"
     }
 }
