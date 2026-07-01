@@ -1,0 +1,23 @@
+<%- include("partials/head.ejs") %>
+<%- include("partials/header.ejs") %>
+
+<main>
+
+        <section class="form-productos">
+            <h2>Consulte un producto por su ID: </h2>
+
+            <form id="getProducto-form">
+                <label for="idProd">ID del producto</label>
+                <input type="number" name="idProd" id="idProd" required>
+                <input type="submit" value="Consultar producto" class="boton">
+            </form>
+            <div id="contenedor-productos">
+
+            </div>
+            <div id="contenedor-form">
+
+            </div>
+        </section>
+    </main>
+
+<script src="/js/put.js"></script>

@@ -1,0 +1,87 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+header {
+    background-color: #5c5c5c;
+    padding-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+body {
+    background-color: #333333;
+    color: #d8d8d8;
+}
+
+.logo img {
+    height: 100px;
+    width: 100px;
+    margin: 30px;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.5);
+}
+
+.enlaces{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    list-style: none;
+}
+
+.enlaces a {
+    color:aliceblue;
+    text-decoration: none;
+}
+
+.enlaces li {
+    padding-inline: 10px;
+} 
+
+.seccion-productos {
+    text-align: center;
+    margin: 20px auto;
+    max-width: 1000px;
+}
+
+.seccion-productos h2 {
+    margin: 30px;
+}
+
+#contenedor-productos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    justify-content: center;
+}
+
+.card-producto {
+    border: solid #58a532;
+    background-color:#418022 ;
+    color:white;
+    margin: 30px;
+    padding: 10px;
+}
+
+.card-producto.inactivo {
+    background-color: rgb(117, 2, 2);
+    border: 3px dashed gray;
+}
+
+.card-producto img {
+    max-width: 75px;
+    max-height: 100px;
+}
+
+.btn-logout {
+    align-self: center;
+    padding: 5px 8px;
+    margin-left: 30px;
+    color: aliceblue;
+    background-color: brown;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+}

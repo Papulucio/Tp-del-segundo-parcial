@@ -1,0 +1,54 @@
+<%- include("partials/head.ejs") %>
+<%- include("partials/header.ejs") %>
+
+    <main>
+
+        <section class="form-productos">
+            <div class="form-container"></div>
+                <h2><%= about %></h2>
+
+                <form id="postProducto-form" class="form-alta">
+                    <label for="nombreProd">Nombre</label>
+                    <input type="text" name="nombre" id="nombreProd" required>
+
+                    <label for="imagenProd">Imagen</label>
+                    <input type="text" name="imagen" id="imagen" required>
+
+                    <label for="categoriaProd">Categoria</label>
+                    <select name="categoria" id="categoriaProd" required>
+                        <option value="juego">Juego</option>
+                        <option value="consola">Consola</option>
+                    </select>
+
+                    <label for="precioProd">Precio</label>
+                    <input type="number" name="precio" id="precioProd" required>
+
+                    <input type="submit" value="Agregar producto" class="boton">
+                </form>
+            </div>
+            
+
+            <div class="form-container"></div>
+                <h2>Crear Usuarios</h2>
+
+                <form id="postProducto-form" class="form-alta">
+                    <label for="nombreUser">Nombre</label>
+                    <input type="text" name="nombreUser" id="nombreUser" required>
+
+                    <label for="emailUser">Email</label>
+                    <input type="text" name="emailUser" id="emailUser" required>
+
+                    <label for="contraseñaUser">Contraseña</label>
+                    <input type="text" name="contraseñaUser" id="contraseñaUser" required>
+
+                    <input type="submit" value="Agregar usuario" class="boton">
+                </form>
+            </div>
+
+            <div id="contenedor-productos">
+
+            </div>
+        </section>
+    </main>
+
+    <script src="/js/post.js"></script>

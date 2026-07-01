@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gamer Zone - Catálogo</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="shortcut icon" href="assets/img/favicon.ico" type="image/x-icon">
+</head>
+<body>
+
+        <header>
+        <div class="logo">
+            <a href="index.html" class="logo-container">
+                <img src="assets/img/logo.png" alt="logo matanza gaming">
+                <h1 class="app-name">Gamer Zone</h1>
+            </a>
+        </div>
+
+        <div class="student-credits">
+            <p>Desarrollado por: <strong>Luciano Juárez</strong> y <strong>Facundo Romero</strong></p>
+        </div>
+
+        <ul class="enlaces">
+            <li class="enlace">
+                <a href="productos.html">
+                    <span>🕹️ Catálogo</span>
+                </a>
+            </li>
+
+            <li class="enlace">
+                <a href="carrito.html">
+                    <span>🛒 Mi Pedido</span>
+                </a>
+            </li>
+        </ul>
+    </header>
+
+    <section class="filter-section">
+        <button class="btn-filter" onclick="filtrarProductos('TODOS')">🌟 Todo</button>
+        <button class="btn-filter" onclick="filtrarProductos('CONSOLA')">🕹️ Consolas</button>
+        <button class="btn-filter" onclick="filtrarProductos('JUEGO')">💿 Videojuegos</button>
+    </section>
+
+    <main style="padding: 0 20px 20px 20px; flex: 1;">
+        <div id="contenedor-productos" class="products-container" style="height: auto;">
+            <p class="loading">Cargando catálogo gamer...</p>
+        </div>
+    </main>
+
+    <script src="productos.js"></script>
+    <script src="auth.js"></script>
+</body>
+</html>

@@ -1,0 +1,95 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+header {
+    background-color: #5c5c5c;
+    padding-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+body {
+    background-color: #333333;
+    color: #d8d8d8;
+}
+
+.logo img {
+    height: 100px;
+    width: 100px;
+    margin: 30px;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.5);
+}
+
+.enlaces{
+    text-align: center;
+}
+
+.enlaces a {
+    color:aliceblue;
+    text-decoration: none;
+}
+
+.enlaces li {
+    display: inline;
+    padding-inline: 10px;
+} 
+
+.seccion-productos {
+    text-align: center;
+    margin: 20px auto;
+    max-width: 800px;
+}
+
+.seccion-productos h2 {
+    margin: 30px;
+}
+
+.card-producto {
+    border: solid gray;
+    max-width: 300px;
+    width: auto;
+    margin: 30px;
+    padding: 10px 20px;
+    background-color:#5c5c5c;
+    color: white;
+}
+
+.form-productos {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.form-productos {
+    text-align: center;
+    margin-top: 20px;
+    padding: 20px;
+}
+
+.boton {
+    padding: 2px 10px;
+}
+
+#getProducto-form {
+    margin-top: 20px;
+}
+
+#getProducto-form {
+    margin-top: 20px;
+    padding: 20px;
+}
+
+#contenedor-productos {
+    display: flex;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    justify-content: center;
+}
+
+.card-producto img {
+    max-width: 75px;
+    max-height: 100px;
+}
