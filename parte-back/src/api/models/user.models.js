@@ -1,11 +1,9 @@
 import connection from "../database/db.js";
 
-const selectAdminUsers = (email, password) => {
+const getAdminUsers = (email, password) => {
     const sql = "SELECT * FROM usuario WHERE email = ? and contraseña = ?";
 
-    return connection.query(sql, [email, contraseña]);
+    return connection.query(sql, [email, password]);
 }
 
-export default{
-    selectAdminUsers
-}
+export default getAdminUsers
