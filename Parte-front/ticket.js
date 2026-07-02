@@ -15,8 +15,8 @@ document.addEventListener("DOMContentLoaded", () => {
     ticketCliente.innerText = nombreGuardado;
     ticketId.innerText = `#${String(ultimoPedido.id).padStart(3, '0')}`;
 
-    const hoy = new Date();
-    ticketFecha.innerText = `FECHA: ${hoy.toLocaleDateString('es-AR')} - ${hoy.toLocaleTimeString('es-AR', {hour: '2-digit', minute:'2-digit'})}`;
+    const fechaTexto = `${hoy.toLocaleDateString('es-AR')} - ${hoy.toLocaleTimeString('es-AR', {hour: '2-digit', minute:'2-digit'})}`;
+    ticketFecha.innerText = `FECHA: ${fechaTexto}`;
 
     let htmlContenido = "";
 
