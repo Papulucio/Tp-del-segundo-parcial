@@ -1,6 +1,7 @@
 const contenedorProductos = document.getElementById("contenedor-productos");
-        const postProductoForm = document.getElementById("postProducto-form");
-        const URL_PRODUCTOS = "http://localhost:3000/api/productos";
+const postProductoForm = document.getElementById("postProducto-form");
+const postUsuarioForm = document.getElementById("postUsuario-form");
+const URL_PRODUCTOS = "http://localhost:3000/api/productos";
 
     function validarFormulario(data) {
         const errores = [];
@@ -30,6 +31,47 @@ const contenedorProductos = document.getElementById("contenedor-productos");
             <p class="mensaje mensaje-${type}">${message}</p>
         `;
     }
+
+    postUsuarioForm.addEventListener("submit", async event => {
+        event.preventDefault();
+
+        const formData = new FormData(event.target);
+
+        const data = Object.fromEntries(formData.entries());
+        console.table(data);
+
+        const jsonData = JSON.stringify(data);
+        console.log(jsonData);
+
+    try {
+        const response = await fetch("http://localhost:3000/api/usuarios/", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: jsonData
+        });
+
+        console.log(response);
+        const result = await response.json();
+
+        if (!response.ok) {
+            mostrarMensaje("error", result.message);
+            return;
+        }
+
+        // Mostramos el mensaje de exito y reseteamos el form
+        const infoUser = `${result.message} con id ${result.userId}`
+        mostrarMensaje("exito", infoUser)
+        console.log(infoUser);
+
+        event.target.reset();
+
+    } catch (error) {
+        console.error("Error al enviar los datos: ", error);
+    }
+
+    });
 
     function mostrarListaErrores(array) {
         let htmlErrores = "";

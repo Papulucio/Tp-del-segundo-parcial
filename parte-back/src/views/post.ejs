@@ -31,15 +31,21 @@
             <div class="form-container"></div>
                 <h2>Crear Usuarios</h2>
 
-                <form id="postProducto-form" class="form-alta">
-                    <label for="nombreUser">Nombre</label>
-                    <input type="text" name="nombreUser" id="nombreUser" required>
+                <form id="postUsuario-form" class="form-alta">
+                    <label for="nameUser">Nombre</label>
+                    <input type="text" name="nameUser" id="nameUser" required>
 
                     <label for="emailUser">Email</label>
-                    <input type="text" name="emailUser" id="emailUser" required>
+                    <input type="email" name="emailUser" id="emailUser" required>
 
-                    <label for="contraseñaUser">Contraseña</label>
-                    <input type="text" name="contraseñaUser" id="contraseñaUser" required>
+                    <label for="passUser">Contraseña</label>
+                    <input type="text" name="passUser" id="passUser" required>
+
+                    <label for="esAdmin">Administrador</label>
+                    <select name="esAdmin" id="esAdmin" required>
+                        <option value="1">Activo</option>
+                        <option value="0">Inactivo</option>
+                    </select>
 
                     <input type="submit" value="Agregar usuario" class="boton">
                 </form>

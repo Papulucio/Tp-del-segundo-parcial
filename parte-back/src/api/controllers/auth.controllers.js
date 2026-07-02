@@ -1,4 +1,5 @@
 import userModels from "../models/user.models.js";
+import bcrypt from "bcrypt";
 
 export const loginView = (req, res) => {
     res.render("login", {
@@ -22,7 +23,7 @@ export const getAdminUser = async (req, res) => {
             });
         }
         
-        const [rows] = await userModels(email, password);
+        const [rows] = await userModels.getAdminUsers(email);
 
         if (rows.length === 0) {
             return res.render("login", {
@@ -36,14 +37,27 @@ export const getAdminUser = async (req, res) => {
         const user = rows[0];
         console.table(user);
 
-        req.session.user = {
-            id: user.id,
-            nombre: user.nombre,
-            email: user.email,
-            esAdmin: user.es_admin
+        const match = await bcrypt.compare(password, user.contraseña);
+        console.log(match)
+
+        if (!match) {
+            return res.render("login", {
+                title: "Login",
+                about: "Introduce tus credenciales",
+                archivoCss: "/css/login.css",
+                error: "Credenciales incorrectas"
+            });
         }
+        
         if (user.es_admin) {
-            res.redirect("/dashboard/index");
+            req.session.user = {
+                id: user.id,
+                nombre: user.nombre,
+                email: user.email,
+                esAdmin: user.es_admin
+            };
+
+            return res.redirect("/dashboard/index");
         } else {
             return res.render("login", {
                 title: "Login",
@@ -57,6 +71,7 @@ export const getAdminUser = async (req, res) => {
         console.log(error)
     }
 }
+
 
 export const destroyLogin = (req, res) => {
     req.session.destroy((error) => {
