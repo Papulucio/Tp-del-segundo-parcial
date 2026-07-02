@@ -25,7 +25,7 @@ export const createVenta =async (req, res) => {
         const idVenta = rows.insertId;
 
         for (const item of items) {
-            await ventasModels.insertDetalleVenta(idVenta, item.id, item.cantidad, item. precio);
+            await ventasModels.insertDetalleVenta(idVenta, item.id, item.cantidad, item.precio);
         }
 
         res.status(201).json({ 

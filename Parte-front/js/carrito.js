@@ -54,7 +54,7 @@ async function procesarCompraFinal() {
         return;
     }
 
-    const confirmacion = confirm("¿Confirmas la compra de todos los productos en Gamer Zone?");
+    const confirmacion = confirm("¿Confirmas la compra de todos los productos en Matanza Gaming?");
     
     if (confirmacion) {
         try {
