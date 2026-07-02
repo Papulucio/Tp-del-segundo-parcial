@@ -17,3 +17,24 @@ export const showAllventas = async (req, res) => {
         res.status(500).json({ error: "Error interno al obtener productos" });
     }
 };
+
+export const createVenta =async (req, res) => {
+    try {
+        const { nombre_usuario, fecha, precio, items } = req.body;
+        const [rows] = await ventasModels.insertVenta(nombre_usuario, fecha, precio);
+        const idVenta = rows.insertId;
+
+        for (const item of items) {
+            await ventasModels.insertDetalleVenta(idVenta, item.id, item.cantidad, item. precio);
+        }
+
+        res.status(201).json({ 
+            mensaje: "Venta registrada con éxito",
+            id_venta: idVenta
+        });
+
+    } catch (error) {
+        console.error("Error al guardar la venta:", error);
+        res.status(500).json({ error: "Error interno" });
+    }
+}
