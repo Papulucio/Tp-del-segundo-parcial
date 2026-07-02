@@ -1,7 +1,7 @@
 import express from "express";
 import connection from "./src/api/database/db.js";
 import enviroments from "./src/api/config/enviroments.js";
-import { authRoutes, productRoutes, viewRoutes } from "./src/api/routes/index.js";
+import { authRoutes, productRoutes, userRoutes, ventasRoutes, viewRoutes, detalleRoutes } from "./src/api/routes/index.js";
 import { loggerURL, } from "./src/api/middlewares/middlewares.js";
 import cors from "cors";
 import { __dirname, join } from "./src/api/utils/index.js";
@@ -46,6 +46,9 @@ app.get("/", (req, res) => {
 app.use("/api/productos", productRoutes);
 app.use("/dashboard", viewRoutes);
 app.use("/login", authRoutes);
+app.use("/api/usuarios", userRoutes)
+app.use("/api/ventas", ventasRoutes)
+app.use("/api/detalle_ventas", detalleRoutes)
 
 app.listen(3000, () => {
     console.log(`Servidor corriendo en el puerto 3000`);
