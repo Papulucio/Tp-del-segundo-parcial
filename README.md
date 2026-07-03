@@ -12,6 +12,6 @@ El repositorio está organizado en tres módulos independientes que trabajan en 
 ## 🛠️ Tecnologías Utilizadas
 
 * **Frontend & Dashboard:** HTML, CSS, JavaScript, EJS
-* **Backend:** Node.js / Express / Sequezile
+* **Backend:** Node.js / Express / Sequelize
 * **Control de Versiones:** Git y GitHub para el flujo de trabajo colaborativo.
 
