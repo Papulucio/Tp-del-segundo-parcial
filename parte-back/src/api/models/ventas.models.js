@@ -1,5 +1,33 @@
-import connection from "../database/db.js";
+import { DataTypes } from "sequelize";
+import sequelize from "../database/db.js";
 
+const VentaModel = sequelize.define("Venta", {
+    id: {
+        type: DataTypes.INTEGER,
+        primaryKey: true,
+        autoIncrement: true
+    },
+    nombre_usuario: {
+        type: DataTypes.STRING(50),
+        allowNull: false
+    },
+    fecha: {
+        type: DataTypes.DATE, 
+        allowNull: false,
+        defaultValue: DataTypes.NOW
+    },
+    precio: {
+        type: DataTypes.INTEGER,
+        allowNull: false
+    }
+}, {
+    tableName: "ventas", 
+    timestamps: false
+});
+
+export default VentaModel;
+
+/*
 const selectAllventas = () => {
     const sql = "SELECT * FROM ventas";
     return connection.query(sql);
@@ -20,3 +48,4 @@ export default {
     insertVenta,
     insertDetalleVenta
 }
+*/

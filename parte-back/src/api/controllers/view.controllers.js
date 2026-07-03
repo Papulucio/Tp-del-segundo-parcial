@@ -3,7 +3,7 @@ import productModels from "../models/product.models.js";
 export const indexView = async (req, res) => {
     
     try {
-        const [rows] = await productModels.selectAllproducts();
+        const rows = await productModels.findAll();
         res.render("index", {
         title: "Inicio",
         about: "Todos los productos",

@@ -1,5 +1,47 @@
-import connection from "../database/db.js"
+import { DataTypes } from "sequelize";
+import sequelize from "../database/db.js";
 
+const Producto = sequelize.define("Producto", {
+    id: {
+        type: DataTypes.INTEGER,
+        primaryKey: true,
+        autoIncrement: true
+    },
+    nombre: {
+        type: DataTypes.STRING(100),
+        allowNull: false
+    },
+    imagen: {
+        type: DataTypes.STRING(300),
+        allowNull: false
+    },
+    categoria: {
+        type: DataTypes.STRING(30),
+        allowNull: false
+    },
+    precio: {
+        type: DataTypes.INTEGER, 
+        allowNull: false
+    },
+    activo: {
+        type: DataTypes.BOOLEAN, 
+        allowNull: false,
+        defaultValue: true
+    }
+}, {
+    tableName: "productos",
+    timestamps: false 
+});
+
+export default Producto;
+
+
+
+
+
+
+
+/*
 /////////////////////////////////
 // Traer todos los productos
 const selectAllproducts = () => {
@@ -58,3 +100,4 @@ export default {
     updateProduct,
     deleteProduct
 }
+*/

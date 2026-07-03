@@ -100,3 +100,18 @@ body {
     transition: background-color 0.3s ease;
     cursor: pointer;
 }
+
+.contenedor-columnas {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    align-items: flex-start;
+}
+
+.form-container {
+    border: 1px solid gray;
+    border-radius: 8px;
+    padding: 20px;
+    width: 400px;
+    background-color: #444;
+}

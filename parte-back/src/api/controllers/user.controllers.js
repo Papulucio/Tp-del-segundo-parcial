@@ -1,4 +1,4 @@
-import userModels from "../models/user.models.js";
+import UserModel from "../models/user.models.js";
 import bcrypt from "bcrypt";
 
 //////////////////////
@@ -13,12 +13,17 @@ export const createAdminUser = async (req, res) => {
         const saltRounds = 10;
         const hashedPassword = await bcrypt.hash(passUser, saltRounds);
 
-        const [rows] = await userModels.createAdminUser(nameUser, emailUser, hashedPassword, esAdmin);
+        const rows = await UserModel.create({
+            nombre: nameUser,
+            email: emailUser,
+            contraseña: hashedPassword,
+            esAdmin: esAdmin
+        });
         
         // Optimizacion 4: En lugar de 201, devolvemos un 201 "Created"
         res.status(201).json({
             message: `Usuario creado con exito`,
-            userId: rows.insertId
+            userId: rows.id
         });
 
     } catch (error) {
@@ -33,7 +38,7 @@ export const createAdminUser = async (req, res) => {
 
 export const showAllUsers = async (req, res) => {
     try {
-        const [rows] = await userModels.selectAllusers();
+        const [rows] = await UserModel.findAll();
 
         if (rows.length === 0) {
             return res.status(404).json({ message: "No se encontraron usuarios" });

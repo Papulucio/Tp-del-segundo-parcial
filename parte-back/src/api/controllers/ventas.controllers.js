@@ -1,8 +1,9 @@
-import ventasModels from "../models/ventasModels.js";
+import VentasModel from "../models/ventas.models.js";
+import DetalleVentaModel from "../models/detalle.models.js";
 
 export const showAllventas = async (req, res) => {
     try {
-        const [rows] = await ventasModels.selectAllventas();
+        const rows = await VentasModel.findAll();
 
         if (rows.length === 0) {
             return res.status(404).json({ message: "No se encontraron productos" });
@@ -18,14 +19,22 @@ export const showAllventas = async (req, res) => {
     }
 };
 
-export const createVenta =async (req, res) => {
+export const createVenta = async (req, res) => {
     try {
+
+        console.log("Datos recibidos desde el front:", req.body);
+
         const { nombre_usuario, fecha, precio, items } = req.body;
-        const [rows] = await ventasModels.insertVenta(nombre_usuario, fecha, precio);
-        const idVenta = rows.insertId;
+        const rows = await VentasModel.create({nombre_usuario, fecha, precio});
+        const idVenta = rows.id;
 
         for (const item of items) {
-            await ventasModels.insertDetalleVenta(idVenta, item.id, item.cantidad, item.precio);
+            await DetalleVentaModel.create({
+                venta_id: idVenta,
+                producto_id: item.id,
+                cantidad: item.cantidad,
+                precio_unitario: item.precio
+            });
         }
 
         res.status(201).json({ 

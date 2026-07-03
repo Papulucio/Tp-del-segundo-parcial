@@ -23,9 +23,9 @@ export const getAdminUser = async (req, res) => {
             });
         }
         
-        const [rows] = await userModels.getAdminUsers(email);
+        const user = await userModels.findOne({where: {email: email}});
 
-        if (rows.length === 0) {
+        if (!user) {
             return res.render("login", {
                 title: "Login",
                 about: "Introduce tus credenciales",
@@ -34,7 +34,6 @@ export const getAdminUser = async (req, res) => {
             });
         }
 
-        const user = rows[0];
         console.table(user);
 
         const match = await bcrypt.compare(password, user.contraseña);

@@ -1,9 +1,9 @@
-import ProductModel from "../models/product.models.js";
+import ProductModels from "../models/product.models.js";
 
 // 1. OBTENER TODOS
 export const getProducts = async (req, res) => {
     try {
-        const [rows] = await ProductModel.selectAllproducts();
+        const rows = await ProductModels.findAll();
 
         if (rows.length === 0) {
             return res.status(404).json({ message: "No se encontraron productos" });
@@ -22,13 +22,13 @@ export const getProducts = async (req, res) => {
 // 2. OBTENER UNO POR ID
 export const getOneProduct = async (req, res) => {
     try {
-        const [rows] = await ProductModel.selectProductById(req.id);
+        const rows = await ProductModels.findByPk(req.id);
 
-        if (rows.length === 0) {
+        if (!rows) {
             return res.status(404).json({ error: `No se encontró un producto con id ${req.id}` });
         }
 
-        res.status(200).json({ payload: rows });
+        res.status(200).json({ payload: [rows] });
     } catch (error) {
         console.error(`Error obteniendo el producto`, error.message);
         res.status(500).json({ error: "Error interno al obtener el producto" });
@@ -41,11 +41,17 @@ export const createProduct = async (req, res) => {
         const {id, nombre, imagen, categoria, precio, activo} = req.body;
         const cleanName = nombre.trim();
 
-        const [rows] = await ProductModel.insertNewProduct(id, cleanName, imagen, categoria, precio, activo);
+        const rows = await ProductModels.create({id: id, 
+            nombre: cleanName,
+            imagen: imagen, 
+            categoria: categoria,
+            precio: precio, 
+            activo: activo
+        });
 
         res.status(201).json({
-            message: `Producto creado con éxito con id ${rows.insertId}`,
-            productId: rows.insertId
+            message: `Producto creado con éxito con id ${rows.id}`,
+            productId: rows.id
         });
     } catch (error) {
         console.error(error);
@@ -58,10 +64,10 @@ export const updateProduct = async (req, res) => {
     try {
         const { id, nombre, imagen, categoria, precio, activo } = req.body;
 
-        const [result] = await ProductModel.updateProduct(nombre, imagen, categoria, precio, activo, id);
+        const [result] = await ProductModels.update({nombre, imagen, categoria, precio, activo}, {where: {id:id}});
 
-        if (result.changedRows === 0) {
-            return res.status(404).json({ message: "No se actualizó el producto" });
+        if (result === 0) {
+            return res.status(404).json({ error: "No modificaste ningún campo del producto" });
         }
 
         res.status(200).json({ message: "Producto actualizado con éxito" });
@@ -74,7 +80,8 @@ export const updateProduct = async (req, res) => {
 // 5. ELIMINAR PRODUCTO
 export const deleteProduct = async (req, res) => {
     try {
-        await ProductModel.deleteProduct(req.id);
+        const { id } = req.params;
+        await ProductModels.destroy({where: {id:id}});
 
         res.status(200).json({
             message: `Producto con id ${req.id} eliminado correctamente`

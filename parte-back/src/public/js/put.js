@@ -9,6 +9,13 @@
             `;
         }
 
+        function mostrarError(message) {
+            contenedorProductos.innerHTML = `
+                <p class="mensaje mensaje-error">${message}</p>
+            `;
+}
+        
+
         function mostrarListaErrores(array) {
             let htmlErrores = "";
             array.forEach(error => {
@@ -34,8 +41,8 @@
                 const datos = await response.json();
 
                 if (!response.ok) {
-                    mostrarMensaje("error", datos.message);
-                return;
+                    mostrarError(datos.message || datos.error);
+                    return;
                 }
                 
                 const producto = datos.payload[0];
@@ -146,21 +153,20 @@
                 let resultado = await respuesta.json();
 
                 if(!respuesta.ok) {
-
-                    console.log(`Lista de errores: \n ${resultado.listaErrores.length}`);
                     contenedorForm.innerHTML = "";
-                    if (resultado.listaErrores) {
-                        mostrarListaErrores(resultado.listaErrores);
-                    }
-                    mostrarMensaje("error", resultado.message);
-                    console.log(resultado);
+            
+                if (resultado.listaErrores) {
+                    console.log(`Lista de errores: \n ${resultado.listaErrores.length}`);
+                    mostrarListaErrores(resultado.listaErrores);
                     resultado.listaErrores.forEach(error => {
                         console.log(error);
-                    })
-                    console.log(resultado.listaErrores)
-                    return;
-
+                    });
                 }
+
+                mostrarMensaje("error", resultado.message || resultado.error);
+                console.log(resultado);
+                return;
+            }
 
                 contenedorProductos.innerHTML = "";
                 contenedorForm.innerHTML = "";
