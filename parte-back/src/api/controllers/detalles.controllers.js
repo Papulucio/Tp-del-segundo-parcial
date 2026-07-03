@@ -2,7 +2,7 @@ import detallesModel from "../models/detalle.models.js"
 
 export const showAlldetalles = async (req, res) => {
     try {
-        const [rows] = await VentasModel.findAll();
+        const [rows] = await detallesModel.findAll();
 
         if (rows.length === 0) {
             return res.status(404).json({ message: "No se encontraron detalles" });
