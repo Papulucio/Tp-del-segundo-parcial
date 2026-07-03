@@ -88,6 +88,8 @@ const URL_PRODUCTOS = "http://localhost:3000/api/productos";
 
             const data = Object.fromEntries(formData.entries());
 
+            data.esAdmin = Number(data.esAdmin)
+
             data.precio = Number(data.precio);
 
             const errores = validarFormulario(data);

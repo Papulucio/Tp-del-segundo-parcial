@@ -131,6 +131,8 @@
 
             if(!confirmacion) {
                 alert("Actualización cancelada");
+                contenedorProductos.innerHTML = "";
+                contenedorForm.innerHTML = "";
                 return;
             }
 

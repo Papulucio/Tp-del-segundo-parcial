@@ -9,7 +9,7 @@ import session from "express-session";
 
 
 const app = express();
-const { port, session_key } =enviroments;
+const { port, session_key } = enviroments;
 const PORT = port;
 
 
@@ -42,7 +42,8 @@ app.get("/", (req, res) => {
 });
 
 
-// RUTAS
+// ENDPOINTS//
+
 app.use("/api/productos", productRoutes);
 app.use("/dashboard", viewRoutes);
 app.use("/login", authRoutes);

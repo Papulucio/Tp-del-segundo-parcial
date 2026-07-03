@@ -17,7 +17,7 @@ export const createAdminUser = async (req, res) => {
             nombre: nameUser,
             email: emailUser,
             contraseña: hashedPassword,
-            esAdmin: esAdmin
+            es_admin: esAdmin
         });
         
         // Optimizacion 4: En lugar de 201, devolvemos un 201 "Created"
